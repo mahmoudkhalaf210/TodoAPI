@@ -14,4 +14,9 @@ app.MapGet("/todoitems", async (TodoDB db) =>
     await db.Todos.ToListAsync()
 );
 
+app.MapGet("/todoitem/{id}", async (int id, TodoDB db) =>
+await db.Todos.FindAsync(id)
+);
+
+
 app.Run();
