@@ -1,6 +1,9 @@
 var builder = WebApplication.CreateBuilder(args);
+
+// add DI -- addService 
+
 var app = builder.Build();
 
-app.MapGet("/", () => "Hello World!");
+// Configure Pipeline -- UseMethod -- auth 
 
 app.Run();
