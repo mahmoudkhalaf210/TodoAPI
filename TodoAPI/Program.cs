@@ -26,4 +26,14 @@ app.MapPost("/todoitems", async (TodoItem todo, TodoDB db) =>
 });
 
 
+app.MapPut("/todoitems", async (int id, TodoItem newTodo, TodoDB db) =>
+{
+    var todo = await db.Todos.FindAsync(id);
+    if (todo == null) return Results.NotFound();
+    todo.Name = newTodo.Name;
+    todo.IsComplete = newTodo.IsComplete;
+    await db.SaveChangesAsync();
+    return Results.NoContent();
+});
+
 app.Run();
